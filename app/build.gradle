@@ -23,6 +23,16 @@ android {
         exclude 'META-INF/license.txt'
         exclude 'META-INF/NOTICE'
         exclude 'META-INF/notice.txt'
+
+
+        //exclude 'META-INF/spring.tooling'
+        //exclude 'META-INF/INDEX.LIST'
+        //exclude 'META-INF/spring.handlers'
+        //exclude 'META-INF/spring-configuration-metadata.json'
+        //exclude 'META-INF/spring.factories'
+        //exclude 'META-INF/ASL-2.0.txt'
+        //exclude 'META-INF/web-fragment.xml'
+        //exclude 'META-INF/spring.provides'
     }
 }
 
@@ -34,5 +44,11 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'org.springframework.android:spring-android-rest-template:1.0.1.RELEASE'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.3.2'
+    compile project(':entityboundaries')
+
+    //compile("org.springframework.boot:spring-boot-starter-data-rest:1.2.8.RELEASE")
+    //compile("org.springframework.boot:spring-boot-starter-data-mongodb:1.4.1.RELEASE")
+    ////testCompile("org.springframework.boot:spring-boot-starter-test")
+
     testCompile 'junit:junit:4.12'
 }

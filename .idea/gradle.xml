@@ -5,11 +5,16 @@
       <GradleProjectSettings>
         <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="C:\Program Files\Android\Android Studio\gradle\gradle-2.14.1" />
+        <option name="gradleHome" value="E:\programs\Android\Android Studio\gradle\gradle-2.14.1" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/entities" />
+            <option value="$PROJECT_DIR$/entityboundaries" />
+            <option value="$PROJECT_DIR$/jin-use-cases" />
+            <option value="$PROJECT_DIR$/repositories" />
+            <option value="$PROJECT_DIR$/repositories-mocks" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -15,8 +15,27 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.concurrent.Future;
+
+
+/*
+// https://software.intel.com/en-us/articles/accessing-a-rest-based-database-backend-from-an-android-app
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
+
+@Configuration
+@EnableMongoRepositories
+@Import(RepositoryRestMvcConfiguration.class)
+@EnableAutoConfiguration*/
 public class MainActivity extends AppCompatActivity {
     private Intent mMenuServiceIntent;
+    private mx.foodstack.spring.Menu mMenu;
+
+    private MenuRepository mMenuRepository = new MenuRepository();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         //new HttpRequestTask().execute();
         //new HttpRequestRestaurantTask().execute();
-        new HttpRequestMenuTask().execute();
+        new RequestMenusTask().execute();
     }
 
     @Override
@@ -47,6 +66,12 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+
+    private void setMenu(mx.foodstack.spring.Menu menu) {
+        mMenu = menu;
+
+        System.out.println(menu);
     }
 
     //@Override
@@ -154,6 +179,36 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(Restaurant[] restaurants) {
             TextView greetingIdText = (TextView) findViewById(R.id.id_value);
             greetingIdText.setText(Integer.toString(restaurants.length));
+        }
+    }
+
+
+
+    private class RequestMenusTask extends AsyncTask<Void, Void, mx.foodstack.spring.Menu[]> {
+        @Override
+        protected mx.foodstack.spring.Menu[] doInBackground(Void... params) {
+            mx.foodstack.spring.Menu[] menus;
+            Future<mx.foodstack.spring.Menu[]> menusFuture = mMenuRepository.getMenus();
+
+            //while (!menusFuture.isDone()) {
+            //askUserToWait();
+            //doSomeComputationInTheMeantime();
+            //}
+
+            try {
+                menus = menusFuture.get();
+            }
+            catch (Exception e) {
+                Log.e("MainActivity", e.getMessage(), e);
+                menus = new mx.foodstack.spring.Menu[0];
+            }
+
+            return menus;
+        }
+
+        @Override
+        protected void onPostExecute(mx.foodstack.spring.Menu[] menus) {
+            setMenu(menus.length == 0 ? null : menus[0]);
         }
     }
 }

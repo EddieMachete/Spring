@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Spring.iml" filepath="$PROJECT_DIR$/Spring.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/entities/entities.iml" filepath="$PROJECT_DIR$/entities/entities.iml" />
+      <module fileurl="file://$PROJECT_DIR$/entityboundaries/entityboundaries.iml" filepath="$PROJECT_DIR$/entityboundaries/entityboundaries.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jin-use-cases/jin-use-cases.iml" filepath="$PROJECT_DIR$/jin-use-cases/jin-use-cases.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repositories/repositories.iml" filepath="$PROJECT_DIR$/repositories/repositories.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repositories-mocks/repositories-mocks.iml" filepath="$PROJECT_DIR$/repositories-mocks/repositories-mocks.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring.iml" filepath="$PROJECT_DIR$/spring.iml" />
     </modules>
   </component>
 </project>

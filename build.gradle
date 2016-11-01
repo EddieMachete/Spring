@@ -6,11 +6,14 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.2'
+        //classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.1.RELEASE")
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
+
+//apply plugin: 'spring-boot'
 
 allprojects {
     repositories {

@@ -1,1 +1,1 @@
-include ':app'
+include ':app', ':entityboundaries', ':entities', ':jin-use-cases', ':repositories', ':repositories-mocks'
