@@ -9,14 +9,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.widget.TextView;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.concurrent.Future;
 
+import javax.inject.Inject;
 
 /*
 // https://software.intel.com/en-us/articles/accessing-a-rest-based-database-backend-from-an-android-app
@@ -32,6 +30,9 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguratio
 @Import(RepositoryRestMvcConfiguration.class)
 @EnableAutoConfiguration*/
 public class MainActivity extends AppCompatActivity {
+    @Inject
+    HomeUseCases mUseCases;
+
     private Intent mMenuServiceIntent;
     private mx.foodstack.spring.Menu mMenu;
 
@@ -51,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
         //            .add(R.id.container, new PlaceholderFragment())
         //            .commit();
         //}
+
+        //useCaseInjector.inject(this);
+        mUseCases = ((SpringApplication) getApplication()).getHomeUseCases();
+        System.out.println(mUseCases.showHighlightsCarousel());
     }
 
     @Override

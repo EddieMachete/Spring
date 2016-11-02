@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt' // Required for Dagger dependency injector
 
 android {
     compileSdkVersion 24
@@ -45,10 +46,20 @@ dependencies {
     compile 'org.springframework.android:spring-android-rest-template:1.0.1.RELEASE'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.3.2'
     compile project(':entityboundaries')
+    compile project(':entities')
+    compile project(':repositories')
 
     //compile("org.springframework.boot:spring-boot-starter-data-rest:1.2.8.RELEASE")
     //compile("org.springframework.boot:spring-boot-starter-data-mongodb:1.4.1.RELEASE")
     ////testCompile("org.springframework.boot:spring-boot-starter-test")
+
+
+
+    // Dagger dependencies
+    apt 'com.google.dagger:dagger-compiler:2.7'
+    compile 'com.google.dagger:dagger:2.7'
+    provided 'javax.annotation:jsr250-api:1.0'
+    compile 'org.glassfish:javax.annotation:10.0-b28'
 
     testCompile 'junit:junit:4.12'
 }
